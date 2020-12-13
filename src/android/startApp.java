@@ -125,7 +125,7 @@ public class startApp extends Assets {
 		JSONObject params;
 		JSONArray flags;
 		JSONArray component;
-
+        String extraText;
 		JSONObject extra;
 		String key;
 
@@ -233,6 +233,11 @@ public class startApp extends Assets {
 					if(component.length() == 2) {
 						LaunchIntent.setComponent(new ComponentName(component.getString(0), component.getString(1)));
 					}
+				}
+
+				if(params.has("extraText")) {
+				    extraText = params.getString("extraText");
+				    LaunchIntent.putExtra(Intent.EXTRA_TEXT, extraText);
 				}
 
 				/**
